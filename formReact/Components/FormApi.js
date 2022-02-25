@@ -15,15 +15,15 @@ class NavButton extends React.Component {
         const step = this.props.step;
         if (step === 1) {
             return (
-                <div>
-                    <button type="button" onClick={() => this.props.updateStep(step + 1)} className="btn btn-primary">Avanti</button>
+                <div className="d-flex justify-content-end">
+                    <button type="button" onClick={() => this.props.updateStep(step + 1)} className="btn btn-outline-primary">Avanti</button>
                 </div>
             )
         } else {
             return (
-                <div className="d-flex">
-                    <button className="mx-1" type="button" onClick={() => this.props.updateStep(step - 1)} className="btn btn-primary">Indietro</button>
-                    <button className="mx-1" type="button" onClick={() => this.props.updateStep(step + 1)} className="btn btn-primary">Avanti</button>
+                <div className="d-flex justify-content-end">
+                    <button type="button" onClick={() => this.props.updateStep(step - 1)} className="btn btn-outline-secondary mx-1">Indietro</button>
+                    <button type="submit" onClick={() => this.props.updateStep(step + 1)} className="btn btn-outline-primary mx-1">Avanti</button>
                 </div>
             )
         }
@@ -88,6 +88,13 @@ class StepForm extends React.Component {
 
     handleUpdate = (step) => {
         this.setState({ step: step })
+        if (step === 3) {
+            this.handleSubmit()
+        }
+    }
+
+    handleSubmit(event) {
+        alert('firstname: ' + this.state.form.firstname);
     }
 
 
@@ -120,7 +127,7 @@ class StepForm extends React.Component {
                 return (
                     <div>
                         <h3>
-                            Form Finito!
+                           Grazie per aver completato il form!
                         </h3>
                     </div>
                 )
@@ -132,9 +139,13 @@ class StepForm extends React.Component {
 }
 
 class FormContainer extends React.Component {
+
+
+
+
     render() {
         return (
-            <form className="contantForm w-100">
+            <form action="https://www.youtube.com/results" onSubmit={this.handleSubmit} className="contantForm w-100">
                 <StepForm />
             </form>
 

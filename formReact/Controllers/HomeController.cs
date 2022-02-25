@@ -12,6 +12,7 @@ namespace formReact.Controllers
         {
             ViewBag.Title = "Home Page";
 
+
             return View();
         }
     }
